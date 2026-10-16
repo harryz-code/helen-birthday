@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Helen's Birthday Casino</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <!-- Intro -->
+    <section class="screen" id="screen-intro">
+      <div class="marquee">
+        <div class="bulbs"></div>
+        <p class="eyebrow">Welcome to</p>
+        <h1 class="neon"><span class="js-name">Helen</span>'s Birthday Casino</h1>
+        <div class="big-chip"><span class="js-age">26</span></div>
+        <p class="tagline">3 spins &middot; 6 games &middot; 6 mystery gifts</p>
+        <p class="date js-date"></p>
+        <button class="btn btn-gold" data-action="enter">Enter the Casino</button>
+      </div>
+    </section>
+
+    <!-- Lobby -->
+    <section class="screen" id="screen-lobby">
+      <header class="lobby-header">
+        <h2 class="title">Pick a table</h2>
+        <div class="spins">
+          <span class="spins-label">Spins left</span>
+          <div class="spin-chips" id="spin-chips"></div>
+        </div>
+      </header>
+      <div class="tables">
+        <button class="table-card" data-table="wheel">
+          <span class="table-icon">🎡</span>
+          <span class="table-name">Roulette Wheel</span>
+          <span class="table-sub">Classic. Elegant. Round and round.</span>
+        </button>
+        <button class="table-card" data-table="slots">
+          <span class="table-icon">🎰</span>
+          <span class="table-name">Slot Machine</span>
+          <span class="table-sub">Pull the lever, line up three.</span>
+        </button>
+        <button class="table-card danger" data-table="revolver">
+          <span class="table-icon">🔫</span>
+          <span class="table-name">Russian Roulette</span>
+          <span class="table-sub">Six chambers. One pull. No fear.</span>
+        </button>
+      </div>
+      <h3 class="section-label">On the table tonight</h3>
+      <div class="game-grid" id="game-grid"></div>
+    </section>
+
+    <!-- Table (spin) -->
+    <section class="screen" id="screen-table">
+      <header class="table-header">
+        <button class="btn btn-ghost" id="table-back">&larr; Lobby</button>
+        <h2 class="title" id="table-title"></h2>
+        <span class="spacer"></span>
+      </header>
+      <div class="stage" id="stage"></div>
+      <p class="table-status" id="table-status"></p>
+      <button class="btn btn-gold" id="spin-btn">Spin</button>
+    </section>
+
+    <!-- Landed game -->
+    <section class="screen" id="screen-game">
+      <div class="game-card">
+        <p class="eyebrow">You landed on</p>
+        <div class="game-hint" id="game-hint"></div>
+        <p class="hint-caption" id="game-hint-label"></p>
+        <h2 class="game-title" id="game-title"></h2>
+        <p class="game-desc" id="game-desc"></p>
+        <div class="win-rule">
+          <span class="win-rule-label">To win</span>
+          <p id="game-rule"></p>
+        </div>
+        <div class="mystery">🎁 Mystery gift &mdash; revealed only if <span class="js-name">Helen</span> wins</div>
+        <button class="btn btn-outline" data-action="host">Host: record the result</button>
+      </div>
+    </section>
+
+    <!-- Result reveal -->
+    <section class="screen" id="screen-reveal">
+      <div class="reveal" id="reveal-content"></div>
+      <button class="btn btn-gold" id="reveal-next"></button>
+    </section>
+
+    <!-- Finale -->
+    <section class="screen" id="screen-finale">
+      <h1 class="neon" id="finale-title"></h1>
+      <p class="tagline" id="finale-subtitle"></p>
+      <div class="finale-grid" id="finale-grid"></div>
+      <p class="finale-message" id="finale-message"></p>
+    </section>
+  </main>
+
+  <!-- Host PIN + result -->
+  <div class="modal" id="host-modal" hidden>
+    <div class="modal-box">
+      <div id="pin-step">
+        <h3>Host only 🎩</h3>
+        <p class="modal-sub">Enter the PIN</p>
+        <div class="pin-dots" id="pin-dots"></div>
+        <div class="keypad" id="keypad"></div>
+        <button class="btn btn-ghost" data-action="close-modal">Cancel</button>
+      </div>
+      <div id="result-step" hidden>
+        <h3>Did <span class="js-name">Helen</span> win?</h3>
+        <div class="result-buttons">
+          <button class="btn btn-gold" data-result="won">She won! 🏆</button>
+          <button class="btn btn-outline" data-result="lost">Not this time</button>
+        </div>
+        <button class="btn btn-ghost" data-action="close-modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bang" id="bang" hidden><span>BANG!</span></div>
+
+  <script src="assets/confetti.js"></script>
+  <script src="games.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
